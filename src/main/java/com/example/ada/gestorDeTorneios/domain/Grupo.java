@@ -21,11 +21,8 @@ public class Grupo {
     @ManyToOne
     @JsonIgnoreProperties({"grupos"})
     private Torneio torneio;
-
+/*
     private List<Equipe> equipe;
+*/
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nome);
-    }
 }

@@ -17,24 +17,22 @@ public class Equipe {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column
     private String nome;
     private String estado;
 
     @OneToMany(mappedBy = "equipe")
     @JsonIgnoreProperties("equipe")
     private List<Jogador> jogadores;
+
     @ManyToMany
     @JoinTable(
-          name = "time_torneios",
-           joinColumns = @JoinColumn(name = "time_id"),
+            name = "equipe_torneios",
+            joinColumns = @JoinColumn(name = "equipe_id"),
             inverseJoinColumns = @JoinColumn(name = "torneios_id")
-     )
+    )
     @JsonIgnoreProperties("equipes")
     private List<Torneio> torneios;
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nome, estado);
-    }
+
 }
+

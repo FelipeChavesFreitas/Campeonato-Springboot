@@ -16,7 +16,6 @@ public class Jogador {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column
     private String nome;
     private Long numero;
     @Enumerated(EnumType.STRING)
@@ -27,8 +26,4 @@ public class Jogador {
     private Equipe equipe;
 
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nome, numero, posicao);
-    }
 }
