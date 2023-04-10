@@ -1,6 +1,7 @@
 package com.example.ada.gestorDeTorneios.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,4 +12,6 @@ import lombok.Setter;
 public class GrupoDTO {
     @NotBlank(message = "O nome é obrigatório")
     private String nome;
+    @NotNull(message = "O Id do Torneio é obrigatório")
+    private Long torneioId;
 }

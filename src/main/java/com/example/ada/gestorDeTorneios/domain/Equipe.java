@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Objects;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -31,4 +33,8 @@ public class Equipe {
     @JsonIgnoreProperties("equipes")
     private List<Torneio> torneios;
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, estado);
+    }
 }

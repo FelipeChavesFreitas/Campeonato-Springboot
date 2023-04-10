@@ -1,12 +1,12 @@
 package com.example.ada.gestorDeTorneios.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Objects;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -18,5 +18,14 @@ public class Grupo {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String nome;
+    @ManyToOne
+    @JsonIgnoreProperties({"grupos"})
+    private Torneio torneio;
+
     private List<Equipe> equipes;
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome);
+    }
 }

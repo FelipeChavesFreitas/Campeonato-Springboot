@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Objects;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -17,7 +19,12 @@ public class Torneio {
     @Column
     private String nome;
     private Double premiacao;
-   // @ManyToMany(mappedBy = "torneios")
-    //private List<Equipe> equipes;
-    //private List<Grupo> grupos;
+    @ManyToMany(mappedBy = "torneios")
+    private List<Equipe> equipes;
+    @OneToMany(mappedBy = "torneio")
+    private List<Grupo> grupos;
+   @Override
+   public int hashCode() {
+       return Objects.hash(id, nome, premiacao);
+   }
 }
