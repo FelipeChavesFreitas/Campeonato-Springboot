@@ -42,8 +42,8 @@ public class JogadorController {
                 .numero(dto.getNumero())
                 .posicao(dto.getPosicao())
                 .build();
-        equipeService.findById(dto.getTimeId());
-        jogador.setEquipes(Equipe.builder().id(dto.getTimeId()).build());
+        equipeService.findById(dto.getEquipeId());
+        jogador.setEquipe(Equipe.builder().id(dto.getEquipeId()).build());
         return jogadorService.save(jogador);
     }
 
@@ -54,8 +54,8 @@ public class JogadorController {
                 .numero(dto.getNumero())
                 .posicao(dto.getPosicao())
                 .build();
-        equipeService.findById(dto.getTimeId());
-        jogador.setEquipes(Equipe.builder().id(dto.getTimeId()).build());
+        equipeService.findById(dto.getEquipeId());
+        jogador.setEquipe(Equipe.builder().id(dto.getEquipeId()).build());
         return jogadorService.update(id, jogador);
     }
 }

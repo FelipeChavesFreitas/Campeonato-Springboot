@@ -21,8 +21,8 @@ public class Equipe {
     private String nome;
     private String estado;
 
-    @OneToMany(mappedBy = "equipes")
-    @JsonIgnoreProperties("equipes")
+    @OneToMany(mappedBy = "equipe")
+    @JsonIgnoreProperties("equipe")
     private List<Jogador> jogadores;
     @ManyToMany
     @JoinTable(

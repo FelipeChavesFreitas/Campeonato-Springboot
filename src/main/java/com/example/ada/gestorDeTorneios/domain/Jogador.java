@@ -24,7 +24,7 @@ public class Jogador {
 
     @ManyToOne
     @JsonIgnoreProperties({"nome", "estado", "jogadores"})
-    private Equipe equipes;
+    private Equipe equipe;
 
 
     @Override

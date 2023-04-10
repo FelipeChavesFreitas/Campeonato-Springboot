@@ -18,5 +18,5 @@ public class JogadorDTO {
     @NotNull(message = "A posição é obrigatória")
     private Posicao posicao;
     @NotNull(message = "O Id do Equipe é obrigatório")
-    private Long timeId;
+    private Long equipeId;
 }

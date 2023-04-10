@@ -22,7 +22,7 @@ public class Grupo {
     @JsonIgnoreProperties({"grupos"})
     private Torneio torneio;
 
-    private List<Equipe> equipes;
+    private List<Equipe> equipe;
 
     @Override
     public int hashCode() {
