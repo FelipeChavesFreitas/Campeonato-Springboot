@@ -4,6 +4,8 @@ import com.example.ada.gestorDeTorneios.domain.Equipe;
 import com.example.ada.gestorDeTorneios.domain.Grupo;
 import com.example.ada.gestorDeTorneios.domain.Torneio;
 import com.example.ada.gestorDeTorneios.dto.GrupoDTO;
+import com.example.ada.gestorDeTorneios.repository.EquipeRepository;
+import com.example.ada.gestorDeTorneios.repository.TorneioRepository;
 import com.example.ada.gestorDeTorneios.service.GrupoService;
 import com.example.ada.gestorDeTorneios.service.TorneioService;
 import jakarta.validation.Valid;
@@ -11,7 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RequestMapping("grupo")
@@ -19,6 +23,8 @@ import java.util.List;
 public class GrupoController {
     private final GrupoService grupoService;
     private final TorneioService torneioService;
+
+    private final EquipeRepository repository;
 
     @GetMapping
     public List<Grupo> list(){
@@ -43,6 +49,12 @@ public class GrupoController {
                 .build();
         torneioService.findById(dto.getTorneioId());
         grupo.setTorneio(Torneio.builder().id(dto.getTorneioId()).build());
+        List<Equipe> listaEquipes = new ArrayList<>();
+        for (int i = 0; i < dto.getEquipeId().size(); i++) {
+            repository.findById(dto.getEquipeId().get(i));
+            listaEquipes.add(Equipe.builder().id(dto.getEquipeId().get(i)).build());
+            grupo.setEquipes(listaEquipes);
+        }
         return grupoService.save(grupo);
     }
 
@@ -53,6 +65,12 @@ public class GrupoController {
                 .build();
         torneioService.findById(dto.getTorneioId());
         grupo.setTorneio(Torneio.builder().id(dto.getTorneioId()).build());
+        List<Equipe> listaEquipes = new ArrayList<>();
+        for (int i = 0; i < dto.getEquipeId().size(); i++) {
+            repository.findById(dto.getEquipeId().get(i));
+            listaEquipes.add(Equipe.builder().id(dto.getEquipeId().get(i)).build());
+            grupo.setEquipes(listaEquipes);
+        }
         return grupoService.update(id, grupo);
     }
 }

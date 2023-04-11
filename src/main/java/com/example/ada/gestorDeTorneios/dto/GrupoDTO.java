@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -14,4 +16,6 @@ public class GrupoDTO {
     private String nome;
     @NotNull(message = "O Id do Torneio é obrigatório")
     private Long torneioId;
+    @NotNull(message = "O Id da Equipe é obrigatório")
+    private List<Long> equipeId;
 }
