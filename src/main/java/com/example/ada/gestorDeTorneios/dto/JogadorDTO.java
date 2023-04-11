@@ -13,7 +13,7 @@ import lombok.Setter;
 public class JogadorDTO {
     @NotBlank(message = "O nome Parque Eolico é obrigatório")
     private String nome;
-    @NotBlank(message = "O número é obrigatório")
+    @NotNull(message = "O número é obrigatório")
     private Long numero;
     @NotNull(message = "A posição é obrigatória")
     private Posicao posicao;

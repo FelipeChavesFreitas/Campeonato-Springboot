@@ -1,11 +1,14 @@
 package com.example.ada.gestorDeTorneios.service;
 
+import com.example.ada.gestorDeTorneios.domain.Equipe;
+import com.example.ada.gestorDeTorneios.domain.Grupo;
 import com.example.ada.gestorDeTorneios.domain.Torneio;
 import com.example.ada.gestorDeTorneios.exceptions.TorneioNotFoundException;
 import com.example.ada.gestorDeTorneios.repository.TorneioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 @RequiredArgsConstructor

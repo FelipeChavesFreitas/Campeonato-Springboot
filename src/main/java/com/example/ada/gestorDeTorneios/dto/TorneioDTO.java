@@ -2,6 +2,7 @@ package com.example.ada.gestorDeTorneios.dto;
 
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,6 @@ import lombok.Setter;
 public class TorneioDTO {
     @NotBlank(message = "O nome é obrigatório")
     private String nome;
-    @NotBlank(message = "A premiação é obrigatória")
+    @NotNull(message = "A premiação é obrigatória")
     private Double premiacao;
 }

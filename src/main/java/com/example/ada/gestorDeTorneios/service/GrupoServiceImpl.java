@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +22,7 @@ public class GrupoServiceImpl implements GrupoService {
 
     @Override
     public Grupo save(Grupo grupo) {
+        //var equipesMudadas = grupo.getTorneio().getEquipes().stream().sorted().collect(Collectors.toList());
         return repository.save(grupo);
     }
 

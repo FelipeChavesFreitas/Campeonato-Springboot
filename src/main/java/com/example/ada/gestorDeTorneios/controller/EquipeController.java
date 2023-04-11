@@ -1,13 +1,16 @@
 package com.example.ada.gestorDeTorneios.controller;
 
 import com.example.ada.gestorDeTorneios.domain.Equipe;
+import com.example.ada.gestorDeTorneios.domain.Torneio;
 import com.example.ada.gestorDeTorneios.dto.EquipeDTO;
 import com.example.ada.gestorDeTorneios.service.EquipeService;
+import com.example.ada.gestorDeTorneios.service.TorneioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -15,6 +18,7 @@ import java.util.List;
 @RestController
 public class EquipeController {
     private final EquipeService equipeService;
+    private final TorneioService torneioService;
 
     @GetMapping
     public List<Equipe> list(){
@@ -38,6 +42,12 @@ public class EquipeController {
                 .nome(dto.getNome())
                 .estado(dto.getEstado())
                 .build();
+        List<Torneio> listaTorneios = new ArrayList<>();
+        for (int i = 0; i < dto.getTorneioId().size(); i++) {
+            torneioService.findById(dto.getTorneioId().get(i));
+            listaTorneios.add(Torneio.builder().id(dto.getTorneioId().get(i)).build());
+            equipe.setTorneios(listaTorneios);
+        }
         return equipeService.save(equipe);
     }
 
@@ -47,6 +57,12 @@ public class EquipeController {
                 .nome(dto.getNome())
                 .estado(dto.getEstado())
                 .build();
+        List<Torneio> listaTorneios = new ArrayList<>();
+        for (int i = 0; i < dto.getTorneioId().size(); i++) {
+            torneioService.findById(dto.getTorneioId().get(i));
+            listaTorneios.add(Torneio.builder().id(dto.getTorneioId().get(i)).build());
+            equipe.setTorneios(listaTorneios);
+        }
         return equipeService.update(id, equipe);
     }
 }

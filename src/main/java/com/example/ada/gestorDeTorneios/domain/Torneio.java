@@ -1,5 +1,6 @@
 package com.example.ada.gestorDeTorneios.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +21,7 @@ public class Torneio {
     private Double premiacao;
 
     @ManyToMany(mappedBy = "torneios")
+    @JsonIgnoreProperties({"torneios", "grupos"})
     private List<Equipe> equipes;
 
     @OneToMany(mappedBy = "torneio")

@@ -30,9 +30,15 @@ public class Equipe {
             joinColumns = @JoinColumn(name = "equipe_id"),
             inverseJoinColumns = @JoinColumn(name = "torneios_id")
     )
-    @JsonIgnoreProperties("equipes")
+    @JsonIgnoreProperties({"equipes", "nome", "premiacao", "grupos"})
     private List<Torneio> torneios;
-
+    @ManyToMany
+    @JoinTable(
+            name = "equipe_grupos",
+            joinColumns = @JoinColumn(name = "equipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "grupos_id")
+    )
+    private List<Grupo> grupos;
 
 }
 
