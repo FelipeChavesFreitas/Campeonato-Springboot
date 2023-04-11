@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @Setter
 @Getter
@@ -19,10 +18,10 @@ public class Grupo {
     private Long id;
     private String nome;
     @ManyToOne
-    @JsonIgnoreProperties({"grupos"})
+    @JsonIgnoreProperties({"equipes", "nome", "premiacao", "grupos" })
     private Torneio torneio;
     @ManyToMany(mappedBy = "grupos")
-    private List<Equipe> equipe;
+    private List<Equipe> equipes;
 
 
 }
