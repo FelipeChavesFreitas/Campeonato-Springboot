@@ -21,6 +21,7 @@ public class Grupo {
     @JsonIgnoreProperties({"equipes", "nome", "premiacao", "grupos" })
     private Torneio torneio;
     @ManyToMany(mappedBy = "grupos")
+    @JsonIgnoreProperties({"torneio"})
     private List<Equipe> equipes;
 
 
